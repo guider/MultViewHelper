@@ -1,4 +1,4 @@
-package com.yanyuanquan.android.multviewhelper;
+package com.yanyuanquan.android.multviewhelper.inter;
 
 
 import android.view.View;
@@ -36,4 +36,5 @@ public interface MultViewHelperInter {
 
     int getEmptyTextId();
 
+    void setOnRetryListener(RetryListener listener);
 }

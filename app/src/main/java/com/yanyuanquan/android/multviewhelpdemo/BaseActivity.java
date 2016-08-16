@@ -3,15 +3,14 @@ package com.yanyuanquan.android.multviewhelpdemo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import com.yanyuanquan.android.multviewhelper.MultViewHelper;
-import com.yanyuanquan.android.multviewhelper.MultViewHelperInter;
+import com.yanyuanquan.android.multviewhelper.inter.MultViewHelperInter;
 import com.yanyuanquan.android.multviewhelper.explan.DefaultMultVIewHelp;
 
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public abstract class BaseActivity extends AppCompatActivity {
     protected MultViewHelperInter helper;
@@ -21,6 +20,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         helper = getHelper();
+
+        ButterKnife.bind(this);
 
         findViewById(R.id.loading).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +69,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public MultViewHelperInter getHelper() {
         if (helper == null) {
-            helper = new DefaultMultVIewHelp(this, (FrameLayout) findViewById(R.id.container), getLayouId());
+            View view = LayoutInflater.from(this).inflate(getLayouId(), null);
+            helper = new DefaultMultVIewHelp(this, (FrameLayout) findViewById(R.id.container), view);
         }
         return helper;
     }

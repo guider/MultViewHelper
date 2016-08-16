@@ -1,6 +1,6 @@
 ###  MultViewHelper
 
-MultViewHelper 是一个适用于Android 平台上多状态切换的框架。
+MultViewHelper 是一个适用于Android 平台上多状态切换的框架.
 
 ## 优点 
 

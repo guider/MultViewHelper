@@ -3,13 +3,15 @@ package com.yanyuanquan.android.multviewhelper;
 import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.yanyuanquan.android.multviewhelper.anno.ViewHelp;
+import com.yanyuanquan.android.multviewhelper.inter.MultViewHelperInter;
+import com.yanyuanquan.android.multviewhelper.inter.RetryListener;
 
 /**
  * Created by apple on 16/8/15.
@@ -26,30 +28,30 @@ public abstract class MultViewHelper implements MultViewHelperInter {
             (ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
     private FrameLayout root;
 
-    public MultViewHelper(android.app.Fragment fragment, int contentLayoutId) {
+    public MultViewHelper(android.app.Fragment fragment, View contentView) {
         inflater = LayoutInflater.from(fragment.getActivity());
         ViewHelp anno = fragment.getClass().getAnnotation(ViewHelp.class);
         root = new FrameLayout(fragment.getActivity());
-        init(anno, fragment.getActivity(), contentLayoutId);
+        init(anno, fragment.getActivity(), contentView);
     }
 
-    public MultViewHelper(Fragment fragment, int contentLayoutId) {
+    public MultViewHelper(Fragment fragment, View contentView) {
         inflater = LayoutInflater.from(fragment.getActivity());
         ViewHelp anno = fragment.getClass().getAnnotation(ViewHelp.class);
         root = new FrameLayout(fragment.getActivity());
-        init(anno, fragment.getActivity(), contentLayoutId);
+        init(anno, fragment.getActivity(), contentView);
     }
 
-    public MultViewHelper(Activity activity, FrameLayout parentView, int contentLayoutId) {
+    public MultViewHelper(Activity activity, FrameLayout parentView, View contentView) {
         inflater = LayoutInflater.from(activity);
         ViewHelp anno = activity.getClass().getAnnotation(ViewHelp.class);
         root = parentView;
-        init(anno, activity, contentLayoutId);
+        init(anno, activity, contentView);
 
     }
 
-    private void init(ViewHelp anno, Context context, int contentLayoutId) {
-        mContentView = inflater.inflate(contentLayoutId, null);
+    private void init(ViewHelp anno, Context context, View contentView) {
+        mContentView = contentView;
         if (anno != null && !anno.isNeedMultView()) {
             root.addView(mContentView, lp);
             return;
@@ -71,6 +73,11 @@ public abstract class MultViewHelper implements MultViewHelperInter {
         } else {
             mLoadingView = inflater.inflate(getLoadingViewId(), null);
         }
+        TextView loadingTextView = (TextView) mLoadingView.findViewById(R.id.loadingtext);
+        if (loadingTextView != null) {
+            //noinspection ResourceType
+            loadingTextView.setText((anno != null && anno.loadingTextId() != 0) ? anno.loadingTextId() : getLoadingTextId());
+        }
         return mLoadingView;
     }
 
@@ -81,6 +88,12 @@ public abstract class MultViewHelper implements MultViewHelperInter {
         } else {
             mEmptyView = inflater.inflate(getEmptyViewId(), null);
         }
+
+        TextView emptyTextView = (TextView) mEmptyView.findViewById(R.id.emptytext);
+        if (emptyTextView != null) {
+            //noinspection ResourceType
+            emptyTextView.setText((anno != null && anno.emptyTextId() != 0) ? anno.emptyTextId() : getEmptyTextId());
+        }
         return mEmptyView;
     }
 
@@ -90,6 +103,22 @@ public abstract class MultViewHelper implements MultViewHelperInter {
         } else {
             mErrorView = inflater.inflate(getErrorViewId(), null);
         }
+        TextView errorTextView = (TextView) mErrorView.findViewById(R.id.errortext);
+        if (errorTextView != null) {
+            //noinspection ResourceType
+            errorTextView.setText(((anno != null && anno.errorTextId() != 0) ? anno.errorTextId() : getErrorTextId()));
+        }
+        View retry = mErrorView.findViewById(R.id.retry);
+        if (retry != null) {
+            retry.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        listener.onRetry(v);
+                    }
+                }
+            });
+        }
         return mErrorView;
     }
 
@@ -97,10 +126,8 @@ public abstract class MultViewHelper implements MultViewHelperInter {
         showViewState(STATE_LOADING);
     }
 
-
     public void showErrorView() {
         showViewState(STATE_ERROR);
-
     }
 
     public void showEmptyView() {
@@ -173,4 +200,11 @@ public abstract class MultViewHelper implements MultViewHelperInter {
     public View getLoadingView() {
         return mLoadingView;
     }
+
+    private RetryListener listener;
+
+    public void setOnRetryListener(RetryListener listener) {
+        this.listener = listener;
+    }
+
 }

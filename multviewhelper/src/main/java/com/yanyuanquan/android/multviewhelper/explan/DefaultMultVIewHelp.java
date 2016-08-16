@@ -11,16 +11,16 @@ import com.yanyuanquan.android.multviewhelper.R;
 
 public class DefaultMultVIewHelp extends MultViewHelper {
 
-    public DefaultMultVIewHelp(Fragment fragment, int contentLayoutId) {
-        super(fragment, contentLayoutId);
+    public DefaultMultVIewHelp(Fragment fragment, View contentView) {
+        super(fragment, contentView);
     }
 
-    public DefaultMultVIewHelp(android.support.v4.app.Fragment fragment, int contentLayoutId) {
-        super(fragment, contentLayoutId);
+    public DefaultMultVIewHelp(android.support.v4.app.Fragment fragment, View contentView) {
+        super(fragment, contentView);
     }
 
-    public DefaultMultVIewHelp(Activity activity, FrameLayout parentView, int contentLayoutId) {
-        super(activity, parentView, contentLayoutId);
+    public DefaultMultVIewHelp(Activity activity, FrameLayout parentView, View contentView) {
+        super(activity, parentView, contentView);
     }
 
     @Override

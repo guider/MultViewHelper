@@ -8,8 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.yanyuanquan.android.multviewhelper.MultViewHelperInter;
+import com.yanyuanquan.android.multviewhelper.inter.MultViewHelperInter;
 import com.yanyuanquan.android.multviewhelper.explan.DefaultMultVIewHelp;
+
+import butterknife.ButterKnife;
 
 /**
  * Created by apple on 16/8/16.
@@ -22,7 +24,9 @@ public class MultStateV4Fragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return (helper = new DefaultMultVIewHelp(this, getLayout())).getFragmentView();
+        View view = inflater.inflate(getLayout(), null);
+        ButterKnife.bind(this, view);
+        return (helper = new DefaultMultVIewHelp(this, view)).getFragmentView();
     }
 
     public int getLayout() {

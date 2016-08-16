@@ -1,11 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:weightSum="335">
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="126" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="error" />
+        android:id="@id/errortext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:drawablePadding="26dp"
+        android:drawableTop="@drawable/icon_wifi"
+        android:text="网络请求失败"
+        android:textColor="#808080"
+        android:textSize="24dp" />
+
+    <Button
+        android:id="@id/retry"
+        android:layout_width="100dp"
+        android:layout_height="33dp"
+        android:background="@drawable/selector_bg_btn_strokegray80_transparent"
+        android:text="重新加载"
+        android:textColor="#808080"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="209" />
 
 </LinearLayout>
