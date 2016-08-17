@@ -1,13 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="content" />
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/lv_act"
+            android:text="ListView+Activity"
+            style="@style/tv" />
+        <TextView
+            android:id="@+id/static_act"
+            android:text="StaticActivity"
+            style="@style/tv" />
+        <TextView
+            android:id="@+id/web_act"
+            android:text="WebViewActivity"
+            style="@style/tv" />
+        <TextView
+            android:id="@+id/lv_fragment"
+            android:text="ListView+Fragment"
+            style="@style/tv" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/static_fragment"
+            android:text="Static+Fragment"
+            style="@style/tv" />
+
+        <TextView
+            android:id="@+id/web_fragment"
+            android:text="WebView+Fragment"
+            style="@style/tv" />
+    </LinearLayout>
+
+</ScrollView>

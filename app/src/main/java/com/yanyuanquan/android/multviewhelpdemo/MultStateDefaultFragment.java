@@ -13,7 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.yanyuanquan.android.multviewhelper.inter.MultViewHelperInter;
-import com.yanyuanquan.android.multviewhelper.explan.DefaultMultVIewHelp;
+import com.yanyuanquan.android.multviewhelper.explan.DefaultMultVIewHelper;
 import com.yanyuanquan.android.multviewhelper.inter.RetryListener;
 
 import java.util.Random;
@@ -42,7 +42,7 @@ public class MultStateDefaultFragment extends Fragment implements RetryListener,
         swiperefreshlayout = (SwipeRefreshLayout) view.findViewById(R.id.swiperefreshlayout);
         swiperefreshlayout.setOnRefreshListener(this);
 
-        return (helper = new DefaultMultVIewHelp(this, view)).getFragmentView();
+        return (helper = new DefaultMultVIewHelper(this, view)).getFragmentView();
     }
 
     @Override

@@ -35,6 +35,14 @@ public abstract class MultViewHelper implements MultViewHelperInter {
         init(anno, fragment.getActivity(), contentView);
     }
 
+    public MultViewHelper(android.app.Fragment fragment, int contentViewId) {
+        inflater = LayoutInflater.from(fragment.getActivity());
+        ViewHelp anno = fragment.getClass().getAnnotation(ViewHelp.class);
+        root = new FrameLayout(fragment.getActivity());
+        init(anno, fragment.getActivity(), inflater.inflate(contentViewId, null));
+
+    }
+
     public MultViewHelper(Fragment fragment, View contentView) {
         inflater = LayoutInflater.from(fragment.getActivity());
         ViewHelp anno = fragment.getClass().getAnnotation(ViewHelp.class);
@@ -42,12 +50,25 @@ public abstract class MultViewHelper implements MultViewHelperInter {
         init(anno, fragment.getActivity(), contentView);
     }
 
+    public MultViewHelper(Fragment fragment, int contentViewId) {
+        inflater = LayoutInflater.from(fragment.getActivity());
+        ViewHelp anno = fragment.getClass().getAnnotation(ViewHelp.class);
+        root = new FrameLayout(fragment.getActivity());
+        init(anno, fragment.getActivity(), inflater.inflate(contentViewId, null));
+    }
+
     public MultViewHelper(Activity activity, FrameLayout parentView, View contentView) {
         inflater = LayoutInflater.from(activity);
         ViewHelp anno = activity.getClass().getAnnotation(ViewHelp.class);
         root = parentView;
         init(anno, activity, contentView);
+    }
 
+    public MultViewHelper(Activity activity, FrameLayout parentView, int contentViewId) {
+        inflater = LayoutInflater.from(activity);
+        ViewHelp anno = activity.getClass().getAnnotation(ViewHelp.class);
+        root = parentView;
+        init(anno, activity, inflater.inflate(contentViewId, null));
     }
 
     private void init(ViewHelp anno, Context context, View contentView) {

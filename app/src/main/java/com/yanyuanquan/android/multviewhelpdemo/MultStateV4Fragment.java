@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.yanyuanquan.android.multviewhelper.inter.MultViewHelperInter;
-import com.yanyuanquan.android.multviewhelper.explan.DefaultMultVIewHelp;
+import com.yanyuanquan.android.multviewhelper.explan.DefaultMultVIewHelper;
 
 import butterknife.ButterKnife;
 
@@ -26,7 +26,7 @@ public class MultStateV4Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(getLayout(), null);
         ButterKnife.bind(this, view);
-        return (helper = new DefaultMultVIewHelp(this, view)).getFragmentView();
+        return (helper = new DefaultMultVIewHelper(this, view)).getFragmentView();
     }
 
     public int getLayout() {

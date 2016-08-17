@@ -9,7 +9,7 @@
 
         </shape>
     </item>
-    <item >
+    <item>
 
         <shape android:shape="rectangle">
             <corners android:radius="4dp" />
