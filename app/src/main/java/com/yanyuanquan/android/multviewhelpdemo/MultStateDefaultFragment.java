@@ -52,7 +52,7 @@ public class MultStateDefaultFragment extends Fragment implements RetryListener,
         getData();
 
     }
-    final String[] arr = {"111", "222", "333", "444", "555","666","7777"};
+    final String[] arr = {"111", "222", "333", "444", "555","666","777"};
 
     private void getData() {
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {

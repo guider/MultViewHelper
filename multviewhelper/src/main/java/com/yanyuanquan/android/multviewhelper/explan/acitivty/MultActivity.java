@@ -7,4 +7,34 @@ import android.app.Activity;
  */
 
 public class MultActivity  extends BaseMultActivity{
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void init() {
+
+    }
+
+    @Override
+    protected void beforeSetContenView() {
+
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return 0;
+    }
+
+    @Override
+    protected int getBasicLayoutId() {
+        return 0;
+    }
 }
