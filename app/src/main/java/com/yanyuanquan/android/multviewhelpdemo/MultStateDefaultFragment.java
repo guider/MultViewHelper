@@ -18,18 +18,15 @@ import com.yanyuanquan.android.multviewhelper.inter.RetryListener;
 
 import java.util.Random;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
-/**
- * Created by apple on 16/8/16.
- */
 
 public class MultStateDefaultFragment extends Fragment implements RetryListener, SwipeRefreshLayout.OnRefreshListener {
     MultViewHelperInter helper;
-    @BindView(R.id.listview)
+    @Bind(R.id.listview)
     ListView listview;
-    @BindView(R.id.swiperefreshlayout)
+    @Bind(R.id.swiperefreshlayout)
     SwipeRefreshLayout swiperefreshlayout;
 
 

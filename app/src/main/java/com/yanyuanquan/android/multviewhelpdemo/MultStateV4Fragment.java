@@ -13,10 +13,6 @@ import com.yanyuanquan.android.multviewhelper.explan.DefaultMultVIewHelper;
 
 import butterknife.ButterKnife;
 
-/**
- * Created by apple on 16/8/16.
- */
-
 public class MultStateV4Fragment extends Fragment {
 
     MultViewHelperInter helper;

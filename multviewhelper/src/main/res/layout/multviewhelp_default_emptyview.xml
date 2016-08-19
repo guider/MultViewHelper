@@ -8,5 +8,8 @@
         android:id="@id/emptytext"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center" />
+        android:gravity="center"
+        android:textColor="#888"
+        android:text="暂无数据"
+        android:textSize="22sp" />
 </LinearLayout>
